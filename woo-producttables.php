@@ -9,7 +9,7 @@
  * Text Domain: woo-product-tables
  * Domain Path: /languages
  * WC requires at least: 3.4.0
- * WC tested up to: 9.8.5
+ * WC tested up to: 9.9
  **/
 
 /**
