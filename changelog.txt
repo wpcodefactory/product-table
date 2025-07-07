@@ -1,5 +1,9 @@
 *** WBW Product Table ***
 
+2025-07-07 - version 2.1.8
+* Fix - Fixed error "Uncaught RangeError: Maximum call stack size exceeded" while saving tables.
+* WC tested up to: 9.9
+
 2025-05-28 - version 2.1.7
 * Fixed compatibility with B2B for WooCommerce
 * Minor issues fix
