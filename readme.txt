@@ -201,6 +201,9 @@ Look at detailed instruction [Step by step: how to create add an order form](htt
 
 == Changelog ==
 
+= 2.1.9 - 20/07/2025 =
+* WC tested up to: 10.0.
+
 = 2.1.8 - 11/07/2025 =
 * Fix - Fixed error "Uncaught RangeError: Maximum call stack size exceeded" while saving tables.
 * WC tested up to: 9.9.
