@@ -33,7 +33,7 @@ class ModInstallerWtbp {
 				if (empty($module['ex_plug_dir'])) {
 					$filesMoved = self::moveFiles($module['code'], $path);
 				} else {
-					$filesMoved = true;     //Those modules doesn't need to move their files
+					$filesMoved = true; //Those modules doesn't need to move their files
 				}
 				if ($filesMoved) {
 					if (FrameWtbp::_()->getTable('modules')->exists($module['code'], 'code')) {
@@ -119,10 +119,10 @@ class ModInstallerWtbp {
 			$plug = ReqWtbp::getVar('checked');
 			$plug = $plug[0];
 		}
-		$locations['plugPath'] = plugin_basename( trim( $plug ) );
-		$locations['plugDir'] = dirname(WP_PLUGIN_DIR . DS . $locations['plugPath']);
+		$locations['plugPath']     = plugin_basename( trim( $plug ) );
+		$locations['plugDir']      = dirname(WP_PLUGIN_DIR . DS . $locations['plugPath']);
 		$locations['plugMainFile'] = WP_PLUGIN_DIR . DS . $locations['plugPath'];
-		$locations['xmlPath'] = $locations['plugDir'] . DS . 'install.xml';
+		$locations['xmlPath']      = $locations['plugDir'] . DS . 'install.xml';
 		return $locations;
 	}
 
@@ -174,7 +174,7 @@ class ModInstallerWtbp {
 					//If module Exists - just activate it, we can't check this using FrameWtbp::moduleExists because this will not work for multy-site WP
 					if (FrameWtbp::_()->getTable('modules')->exists($modDataArr['code'], 'code')) {
 						self::activate($modDataArr);
-					} else {                                           //  if not - install it
+					} else { // if not - install it
 						if (!self::install($modDataArr, $locations['plugDir'])) {
 							/* translators: %s: module name */
 							ErrorsWtbp::push(esc_html(sprintf(__('Install %s failed'), $modDataArr['code'])), ErrorsWtbp::MOD_INSTALL);
@@ -212,7 +212,7 @@ class ModInstallerWtbp {
 		if ($modules) {
 			foreach ($modules as $m) {
 				$modDataArr = UtilsWtbp::xmlNodeAttrsToArr($m);
-				if (FrameWtbp::_()->moduleActive($modDataArr['code'])) { //If module is active - then deacivate it
+				if (FrameWtbp::_()->moduleActive($modDataArr['code'])) { //If module is active - then deactivate it
 					if (FrameWtbp::_()->getModule('options')->getModel('modules')->put(array(
 						'id' => FrameWtbp::_()->getModule($modDataArr['code'])->getID(),
 						'active' => 0,
@@ -238,7 +238,7 @@ class ModInstallerWtbp {
 		if ($modules) {
 			foreach ($modules as $m) {
 				$modDataArr = UtilsWtbp::xmlNodeAttrsToArr($m);
-				if (!FrameWtbp::_()->moduleActive($modDataArr['code'])) { //If module is not active - then acivate it
+				if (!FrameWtbp::_()->moduleActive($modDataArr['code'])) { //If module is not active - then activate it
 					if (FrameWtbp::_()->getModule('options')->getModel('modules')->put(array(
 						'code' => $modDataArr['code'],
 						'active' => 1,
@@ -257,7 +257,7 @@ class ModInstallerWtbp {
 	}
 
 	/**
-	 * Display all errors for module installer, must be used ONLY if You realy need it.
+	 * Display all errors for module installer, must be used ONLY if You really need it.
 	 */
 	public static function displayErrors( $exit = true ) {
 		$errors = ErrorsWtbp::get(ErrorsWtbp::MOD_INSTALL);
